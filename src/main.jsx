@@ -8,3 +8,5 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
+
+import Header from "./components/Header.jsx";
