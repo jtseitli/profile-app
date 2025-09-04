@@ -1,5 +1,5 @@
 function Header() {
-  return <h1>My Profile App</h1>
+  return <h1>Joshua Tseitlin Portfolio</h1>
 }
 
 export default Header
