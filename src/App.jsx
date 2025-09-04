@@ -15,12 +15,19 @@ function App() {
   return (
     <div className="app">
       <Header />
+      <section id="home">
       <Introduction />
-      <div className="card-container">
-        {cards.map((card, index) => (
-          <Card key={index} title={card.title} description={card.description} />
-        ))}
-      </div>
+      </section>
+      <section id="about">
+        {/*about section*/}
+      </section>
+      <section id="projects">
+        <div className="card-container">
+          {cards.map((card, index) => (
+            <Card key={index} title={card.title} description={card.description} />
+          ))}
+        </div>
+      </section>
     </div>
   );
 }
