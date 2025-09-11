@@ -50,18 +50,17 @@ function App() {
 
       <section id="profiles"> 
       <div className="card-container"> 
-        {cards 
+        {cards //*AI was used here to help combine the filter to include name, and description together */
             .filter(card =>
-              card.title.toLowerCase().includes(searchTerm.toLowerCase()) && /* filter by name */
-              (filterRole === "" || card.description === filterRole)        /* filter by description */
+              card.title.toLowerCase().includes(searchTerm.toLowerCase()) && /* include lower case */
+              (filterRole === "" || card.description === filterRole)        /* filter by name and description */
             )
             .map((card, index) => (
               <Card key={index} title={card.title} description={card.description} />
             ))
         }
-      </div>
-      </section>
-
+      </div> 
+      </section> 
     </div>
   );
 }
