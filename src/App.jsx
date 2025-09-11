@@ -48,12 +48,12 @@ function App() {
         </select>
       </div>
 
-      <section id="profiles">
-      <div className="card-container">
-        {cards
-            .filter(card => 
-              card.title.toLowerCase().includes(searchTerm.toLowerCase()) && // filter by name
-              (filterRole === "" || card.description === filterRole)        // filter by position/description
+      <section id="profiles"> 
+      <div className="card-container"> 
+        {cards 
+            .filter(card =>
+              card.title.toLowerCase().includes(searchTerm.toLowerCase()) && /* filter by name */
+              (filterRole === "" || card.description === filterRole)        /* filter by description */
             )
             .map((card, index) => (
               <Card key={index} title={card.title} description={card.description} />
