@@ -1,4 +1,4 @@
-function Header() {
+function Header({ toggleMode, mode }) {
   return(
     <header className="header">
       <nav>
@@ -7,6 +7,9 @@ function Header() {
           <li><a href="#about">About</a></li>
           <li><a href="#profiles">Profiles</a></li>
         </ul>
+        <button onClick={toggleMode} className="mode-toggle">
+          {mode === "light" ? "Dark Mode" : "Light Mode"}
+        </button>
       </nav>
 
     </header>

@@ -12,6 +12,12 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterRole, setFilterRole] = useState("");
 
+  const [mode, setMode] = useState("light");
+  const toggleMode = () => {
+    setMode(mode === "light" ? "dark" : "light");
+  };
+
+
 
   const cards = [
     { title: "John Doe", description: "Web Developer" },
@@ -20,8 +26,8 @@ function App() {
   ];
   
   return (
-    <div className="app">
-      <Header />
+  <div className={`app ${mode}`}>
+    <Header toggleMode={toggleMode} mode={mode} />
 
       <section id="home">
       <Introduction />
@@ -56,7 +62,7 @@ function App() {
               (filterRole === "" || card.description === filterRole)        /* filter by name and description */
             )
             .map((card, index) => (
-              <Card key={index} title={card.title} description={card.description} />
+              <Card key={index} title={card.title} description={card.description}  mode={mode} />
             ))
         }
       </div> 
