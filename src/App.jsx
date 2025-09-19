@@ -1,7 +1,9 @@
 import './App.css'
 import Header from './components/Header.jsx'
 import Introduction from './components/Introduction.jsx'
+import AddProfile from './components/AddProfile'
 import Card from './components/Card.jsx'
+import './AddProfile.css'
 import { useState } from 'react';
 
 
@@ -17,7 +19,9 @@ function App() {
     setMode(mode === "light" ? "dark" : "light");
   };
 
-
+  const handleAddProfile = (newProfile) => {
+    console.log("New profile added:", newProfile);
+  };
 
   const cards = [
     { title: "John Doe", description: "Web Developer" },
@@ -65,7 +69,13 @@ function App() {
               <Card key={index} title={card.title} description={card.description}  mode={mode} />
             ))
         }
+      </div>
+
+      <div className="App">
+      <h1>Add a Profile</h1>
+      <AddProfile onAddProfile={handleAddProfile} />
       </div> 
+      
       </section> 
     </div>
   );

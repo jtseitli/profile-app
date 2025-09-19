@@ -70,7 +70,7 @@ button:hover {
 }
 
 .search-container {
-  text-align: center;
+  text-align:center;
   margin-bottom: 20px;
   
 }
@@ -78,7 +78,7 @@ button:hover {
 .search-container input {
   padding: 8px;
   font-size: 1rem;
-  width: 200px;
+  width: auto;
   color: black;
   background-color: white;
 }
@@ -86,7 +86,6 @@ button:hover {
 .search-container select {
   padding: 8px;
   font-size: 1rem;
-  width: auto;
   color: black;
   background-color: white;
 }
