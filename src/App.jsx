@@ -1,5 +1,4 @@
 import './App.css';
-import './AddProfile.css';
 import Header from './components/Header.jsx';
 import Introduction from './components/Introduction.jsx';
 import Card from './components/Card.jsx';
@@ -10,7 +9,7 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterRole, setFilterRole] = useState("");
   const [mode, setMode] = useState("light");
-
+  
   const [cards, setCards] = useState([
     { title: "John Doe", description: "Web Developer" },
     { title: "Joshua Tseitlin", description: "UX Designer" },
@@ -30,11 +29,9 @@ function App() {
       </section>
 
       <section id="about">
-        {/* About section */}
       </section>
 
       <section id="profiles">
-        {/* Search container */}
         <div className="search-container">
           <input
             type="text"
@@ -50,27 +47,26 @@ function App() {
           </select>
         </div>
 
-        {/* Card container */}
         <div className="card-container">
           {cards
             .filter(
               (card) =>
                 card.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-                (filterRole === "" || card.description === filterRole)
+                (filterRole === "" || card.title === filterRole || card.description === filterRole)
             )
             .map((card, index) => (
               <Card
                 key={index}
-                title={card.title}
-                description={card.description}
-                imageName={card.imageName} // optional
-                mode={mode}
+                title={card.name || card.title}
+                description={card.title || card.description}
+                bio={card.bio}
+                imagePreview={card.imagePreview}
               />
             ))}
         </div>
+
       </section>
 
-      {/* AddProfile component */}
       <AddProfile
         onAddProfile={(newProfile) => setCards([...cards, newProfile])}
       />
