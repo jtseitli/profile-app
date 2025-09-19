@@ -90,3 +90,34 @@ button:hover {
   color: black;
   background-color: white;
 }
+
+.add-profile {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 8px;
+  max-width: 400px;
+  margin: 2rem auto;
+}
+
+.add-profile label {
+  display: block;
+  margin: 0.5rem 0 0.2rem;
+}
+
+.add-profile input,
+.add-profile textarea {
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.error {
+  color: red;
+  font-size: 0.9rem;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
+  margin-top: 1rem;
+}
