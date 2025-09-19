@@ -1,24 +1,16 @@
-<<<<<<< HEAD
-import './App.css'
-import Header from './components/Header.jsx'
-import Introduction from './components/Introduction.jsx'
-import AddProfile from './components/AddProfile'
-import Card from './components/Card.jsx'
-import './AddProfile.css'
-=======
 import './App.css';
+import './AddProfile.css';
 import Header from './components/Header.jsx';
 import Introduction from './components/Introduction.jsx';
 import Card from './components/Card.jsx';
 import AddProfile from './components/AddProfile';
->>>>>>> 91967af258d44189d02b825bb682102fe912e47a
 import { useState } from 'react';
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filterRole, setFilterRole] = useState("");
   const [mode, setMode] = useState("light");
-  
+
   const [cards, setCards] = useState([
     { title: "John Doe", description: "Web Developer" },
     { title: "Joshua Tseitlin", description: "UX Designer" },
@@ -29,19 +21,6 @@ function App() {
     setMode(mode === "light" ? "dark" : "light");
   };
 
-<<<<<<< HEAD
-  const handleAddProfile = (newProfile) => {
-    console.log("New profile added:", newProfile);
-  };
-
-  const cards = [
-    { title: "John Doe", description: "Web Developer" },
-    { title: "Joshua Tseitlin", description: "UX Designer" },
-    { title: "Ava Smith", description: "UI Designer" },
-  ];
-  
-=======
->>>>>>> 91967af258d44189d02b825bb682102fe912e47a
   return (
     <div className={`app ${mode}`}>
       <Header toggleMode={toggleMode} mode={mode} />
@@ -51,9 +30,11 @@ function App() {
       </section>
 
       <section id="about">
+        {/* About section */}
       </section>
 
       <section id="profiles">
+        {/* Search container */}
         <div className="search-container">
           <input
             type="text"
@@ -69,6 +50,7 @@ function App() {
           </select>
         </div>
 
+        {/* Card container */}
         <div className="card-container">
           {cards
             .filter(
@@ -77,34 +59,21 @@ function App() {
                 (filterRole === "" || card.description === filterRole)
             )
             .map((card, index) => (
-<<<<<<< HEAD
-              <Card key={index} title={card.title} description={card.description}  mode={mode} />
-            ))
-        }
-      </div>
-
-      <div className="App">
-      <h1>Add a Profile</h1>
-      <AddProfile onAddProfile={handleAddProfile} />
-      </div> 
-      
-      </section> 
-=======
               <Card
                 key={index}
                 title={card.title}
                 description={card.description}
-                imageName={card.imageName}
+                imageName={card.imageName} // optional
                 mode={mode}
               />
             ))}
         </div>
       </section>
 
+      {/* AddProfile component */}
       <AddProfile
         onAddProfile={(newProfile) => setCards([...cards, newProfile])}
       />
->>>>>>> 91967af258d44189d02b825bb682102fe912e47a
     </div>
   );
 }
