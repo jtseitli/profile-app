@@ -53,18 +53,19 @@ function App() {
             .filter(
               (card) =>
                 card.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-                (filterRole === "" || card.description === filterRole)
+                (filterRole === "" || card.title === filterRole || card.description === filterRole)
             )
             .map((card, index) => (
               <Card
                 key={index}
-                title={card.title}
-                description={card.description}
-                imageName={card.imageName}
-                mode={mode}
+                title={card.name || card.title}
+                description={card.title || card.description}
+                bio={card.bio}
+                imagePreview={card.imagePreview}
               />
             ))}
         </div>
+
       </section>
 
       <section id="fetched-profiles">
