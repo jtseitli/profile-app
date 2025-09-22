@@ -121,3 +121,21 @@ button:hover {
   font-weight: bold;
   margin-top: 1rem;
 }
+
+#fetched-profiles {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+#fetched-profiles .search-container {
+  display: flex;
+  justify-content: center;  
+  gap: 10px;                
+  margin-bottom: 20px;
+  padding: 0;               
+  border: none;
+  background-color: transparent;
+  color: inherit;
+}
+
+

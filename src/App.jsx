@@ -3,6 +3,7 @@ import Header from './components/Header.jsx';
 import Introduction from './components/Introduction.jsx';
 import Card from './components/Card.jsx';
 import AddProfile from './components/AddProfile';
+import Profiles from './components/Profiles.jsx';
 import { useState } from 'react';
 
 function App() {
@@ -28,10 +29,10 @@ function App() {
         <Introduction />
       </section>
 
-      <section id="about">
-      </section>
+      <section id="about"></section>
 
-      <section id="profiles">
+      <section id="local-profiles">
+        <h2>Local Profiles</h2>
         <div className="search-container">
           <input
             type="text"
@@ -64,6 +65,10 @@ function App() {
               />
             ))}
         </div>
+      </section>
+
+      <section id="fetched-profiles">
+        <Profiles />
       </section>
 
       <AddProfile
