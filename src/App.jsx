@@ -1,81 +1,28 @@
-import './App.css';
-import Header from './components/Header.jsx';
-import Introduction from './components/Introduction.jsx';
-import Card from './components/Card.jsx';
-import AddProfile from './components/AddProfile';
-import Profiles from './components/Profiles.jsx';
-import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useState } from "react";
+
+import Home from "./pages/Home";
+import AddProfilePage from "./pages/AddProfile";
+import About from "./pages/About";
+import OtherProfiles from "./pages/OtherProfiles";
+import NotFound from "./pages/NotFound";
+import Header from "./components/Header";
 
 function App() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filterRole, setFilterRole] = useState("");
   const [mode, setMode] = useState("light");
-  
-  const [cards, setCards] = useState([
-    { title: "John Doe", description: "Web Developer" },
-    { title: "Joshua Tseitlin", description: "UX Designer" },
-    { title: "Ava Smith", description: "UI Designer" },
-  ]);
-
-  const toggleMode = () => {
-    setMode(mode === "light" ? "dark" : "light");
-  };
+  const toggleMode = () => setMode(mode === "light" ? "dark" : "light");
 
   return (
-    <div className={`app ${mode}`}>
+    <Router basename="/profile-app">
       <Header toggleMode={toggleMode} mode={mode} />
-
-      <section id="home">
-        <Introduction />
-      </section>
-
-      <section id="about"></section>
-
-      <section id="local-profiles">
-        <h2>Local Profiles</h2>
-        <div className="search-container">
-          <input
-            type="text"
-            placeholder="Search profiles by name..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <select value={filterRole} onChange={(e) => setFilterRole(e.target.value)}>
-            <option value="">All Roles</option>
-            <option value="Web Developer">Web Developer</option>
-            <option value="UX Designer">UX Designer</option>
-            <option value="UI Designer">UI Designer</option>
-          </select>
-        </div>
-
-        <div className="card-container">
-          {cards
-            .filter(
-              (card) =>
-                card.title.toLowerCase().includes(searchTerm.toLowerCase()) &&
-                (filterRole === "" || card.title === filterRole || card.description === filterRole)
-            )
-            .map((card, index) => (
-              <Card
-                key={index}
-                title={card.name || card.title}
-                description={card.title || card.description}
-                bio={card.bio}
-                imagePreview={card.imagePreview}
-              />
-            ))}
-        </div>
-
-      </section>
-
-      <section id="fetched-profiles">
-        <Profiles />
-      </section>
-
-      <AddProfile
-        onAddProfile={(newProfile) => setCards([...cards, newProfile])}
-      />
-    </div>
+      <Routes>
+        <Route path="/" element={<Home mode={mode} />} />
+        <Route path="/add-profile" element={<AddProfilePage mode={mode} />} />
+        <Route path="/about" element={<About mode={mode} />} />
+        <Route path="/other-profiles" element={<OtherProfiles mode={mode} />} />
+        <Route path="*" element={<NotFound mode={mode} />} />
+      </Routes>
+    </Router>
   );
 }
 

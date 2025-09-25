@@ -5,11 +5,8 @@ html, body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f4f4f9; 
   color: #333;
-<<<<<<< HEAD
   text-align: center;
-=======
   overflow-y: auto; 
->>>>>>> 91967af258d44189d02b825bb682102fe912e47a
 }
 
 #root {
