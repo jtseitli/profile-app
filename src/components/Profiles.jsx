@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "./Card";
+import { Link } from "react-router-dom";
 
 function Profiles() {
   const [titles, setTitles] = useState([]);
@@ -68,16 +69,21 @@ function Profiles() {
       <div className="card-container">
         {loading ? (
           <p>Loading...</p>
-        ) : profiles.length > 0 ? (
+          ) : profiles.length > 0 ? (
           profiles.map((profile) => (
-            <Card
+            <Link
               key={profile.id}
-              title={profile.name}
-              description={profile.title}
-              bio={profile.email}
-              image={profile.image_url || null}
-            />
-          ))
+              to={`/fetched-profiles/profile/${profile.id}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+            >
+              <Card
+                title={profile.name}
+                description={profile.title}
+                bio={profile.email}
+                imagePreview={profile.image_url || null}
+              />
+            </Link>
+          ))          
         ) : (
           <p>No profiles found</p>
         )}

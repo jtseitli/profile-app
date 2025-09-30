@@ -9,7 +9,7 @@ function Header({ toggleMode, mode }) {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/about">About</Link></li>
           <li><Link to="/add-profile">Add Profile</Link></li>
-          <li><Link to="/other-profiles">Other Profiles</Link></li>
+          <li><Link to="/fetched-profiles">Other Profiles</Link></li>
           <li>
             <button onClick={toggleMode} className="mode-toggle">
               {mode === "light" ? "Dark Mode" : "Light Mode"}

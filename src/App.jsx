@@ -7,6 +7,8 @@ import About from "./pages/About";
 import OtherProfiles from "./pages/OtherProfiles";
 import NotFound from "./pages/NotFound";
 import Header from "./components/Header";
+import ProfileDetails from "./pages/ProfileDetails";
+
 
 function App() {
   const [mode, setMode] = useState("light");
@@ -19,7 +21,8 @@ function App() {
         <Route path="/" element={<Home mode={mode} />} />
         <Route path="/add-profile" element={<AddProfilePage mode={mode} />} />
         <Route path="/about" element={<About mode={mode} />} />
-        <Route path="/other-profiles" element={<OtherProfiles mode={mode} />} />
+        <Route path="/fetched-profiles" element={<OtherProfiles mode={mode} />}>
+        <Route path="profile/:id" element={<ProfileDetails mode={mode} />} /></Route>
         <Route path="*" element={<NotFound mode={mode} />} />
       </Routes>
     </Router>
