@@ -1,16 +1,17 @@
 import '../index.css';
 import '../App.css';
 import '../AddProfile.css';
-import { useState } from "react";
+import { useContext } from "react";
 import AddProfile from "../components/AddProfile.jsx";
 import { useNavigate } from "react-router-dom";
+import { ProfileContext } from "../context/ProfileContext.jsx";
 
 export default function AddProfilePage({ mode }) {
-  const [cards, setCards] = useState([]); 
+  const { addProfile } = useContext(ProfileContext);
   const navigate = useNavigate();
 
   const handleAddProfile = (newProfile) => {
-    setCards([...cards, newProfile]);
+    addProfile(newProfile); 
     navigate("/"); 
   };
 
