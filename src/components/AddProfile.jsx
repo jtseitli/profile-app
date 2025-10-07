@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
+
 export default function AddProfile({ onAddProfile }) {
   const [profile, setProfile] = useState({
     name: "",
@@ -8,9 +9,13 @@ export default function AddProfile({ onAddProfile }) {
     image: null,
     imagePreview: "",
   });
-
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState("");
+  const nameInputRef = useRef(null);
+
+  useEffect(() => {
+    nameInputRef.current.focus();
+  }, [success]);
 
   const handleChange = (e) => {
     setProfile({ ...profile, [e.target.name]: e.target.value });
@@ -25,14 +30,12 @@ export default function AddProfile({ onAddProfile }) {
         setProfile({ ...profile, image: null, imagePreview: "" });
         return;
       }
-
       const validTypes = ["image/jpeg", "image/jpg", "image/png"];
       if (!validTypes.includes(file.type)) {
         setErrors({ ...errors, image: "Image must be jpg, jpeg, or png" });
         setProfile({ ...profile, image: null, imagePreview: "" });
         return;
       }
-
       setErrors({ ...errors, image: "" });
       setProfile({ ...profile, image: file, imagePreview: URL.createObjectURL(file) });
     }
@@ -69,7 +72,7 @@ export default function AddProfile({ onAddProfile }) {
       <form onSubmit={handleSubmit}>
         <div>
           <label>Name:</label>
-          <input type="text" name="name" value={profile.name} onChange={handleChange} />
+          <input ref={nameInputRef} type="text" name="name" value={profile.name} onChange={handleChange} />
           {errors.name && <p className="error">{errors.name}</p>}
         </div>
         <div>

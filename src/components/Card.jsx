@@ -1,14 +1,18 @@
+import React, { useRef, useLayoutEffect, useState } from "react";
+
 function Card({ title, description, bio, imagePreview }) {
+  const cardRef = useRef(null);
+  const [cardWidth, setCardWidth] = useState(0);
+
+  useLayoutEffect(() => {
+    if (cardRef.current) {
+      setCardWidth(cardRef.current.offsetWidth);
+    }
+  }, []);
+
   return (
-    <div className="card">
-      {imagePreview && (
-        <img
-          src={imagePreview}
-          alt={title}
-          className="card-image"
-          style={{ maxWidth: "150px", maxHeight: "150px", borderRadius: "8px", marginBottom: "0.5rem" }}
-        />
-      )}
+    <div ref={cardRef} className="card">
+      {imagePreview && <img src={imagePreview} alt={title} className="card-image" />}
       <h2>{title}</h2>
       <p>{description}</p>
       {bio && <p>{bio}</p>}
